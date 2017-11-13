@@ -44,8 +44,23 @@ public class IsaSim {
 			switch (opcode) {
 
 			case 0x13:
-				reg[rd] = reg[rs1] + imm;
-				break;
+                            switch (funct3){
+                                case 0x0:
+                                    reg[rd] = reg[rs1] + imm;
+                                    break;
+                                case 0x1:
+                                    reg[rd] = reg[rs1] << imm;
+                                    break;
+                                case 0x4:
+                                    break;
+                                case 0x5:
+                                    break;
+                                case 0x6:
+                                    break;
+                                case 0x7:
+                                    break;
+                            }
+                            break;
                         case 0x33:
                                 break;
                         case 0x03:

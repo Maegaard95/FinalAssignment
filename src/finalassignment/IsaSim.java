@@ -35,6 +35,11 @@ public class IsaSim {
 			int rd = (instr >> 7) & 0x01f;
 			int rs1 = (instr >> 15) & 0x01f;
 			int imm = (instr >> 20);
+                        int funct3 = (instr >> 12) & 0x7;
+                        int funct7 = (instr >> 25);
+                        int imm2 = (funct7 << 5) | rd;
+                        int rs2 = (instr >> 20) & 0x01f;
+                             
 
 			switch (opcode) {
 
@@ -42,17 +47,17 @@ public class IsaSim {
 				reg[rd] = reg[rs1] + imm;
 				break;
                         case 0x33:
-                               break;
+                                break;
                         case 0x03:
-                               break;
+                                break;
                         case 0x67:
-                               break;
+                                break;
                         case 0x23:
-                               break;
+                                break;
                         case 0x37:
-                               break;
+                                break;
                         case 0x6F:
-                               break;
+                                break;
 			default:
 				System.out.println("Opcode " + opcode + " not yet implemented");
 				break;

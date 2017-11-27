@@ -13,7 +13,7 @@ public class IsaSim {
 
     static int pc;
     static int reg[] = new int[32];
-    //static int memory[] = new int[];
+    static int memory[] = new int[1000000];
 
     // Here the first program hard coded as an array
     static int progr[] = {
@@ -21,6 +21,11 @@ public class IsaSim {
         0x00200093, // addi x1 x0 2
         0x00300113, // addi x2 x0 3
         0x002081b3, // add x3 x1 x2
+        0x402181b3,
+        0x00f18193,
+        0x0001f193,
+        0x001141b3,
+        
     };
 
     public static void main(String[] args) {
@@ -133,12 +138,12 @@ public class IsaSim {
                 case 0x3:
                     switch (funct3) {
                         case 0x0:
-                            
+
                             break;
                         case 0x1:
                             break;
                         case 0x2:
-                            
+
                             break;
                         case 0x3:
                             break;
@@ -205,14 +210,15 @@ public class IsaSim {
                     break;
             }
 
-            ++pc; // We count in 4 byte words
+            for (int i = 0; i < reg.length; ++i) {
+                System.out.print("Reg" + i + " " + reg[i] + " ");
+            }
+            System.out.println();
+            ++pc;
+            // We count in 4 byte words
             if (pc >= progr.length) {
                 break;
             }
-            for (int i = 0; i < reg.length; ++i) {
-                System.out.print(reg[i] + " ");
-            }
-            System.out.println();
         }
 
         System.out.println("Program exit");
